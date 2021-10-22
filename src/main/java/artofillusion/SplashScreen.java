@@ -10,7 +10,6 @@
 
 package artofillusion;
 
-import artofillusion.ui.Translate;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
@@ -21,6 +20,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -28,7 +29,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  *
@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 public class SplashScreen extends JDialog implements PropertyChangeListener {
-    
+    private static final Logger logger = Logger.getLogger(SplashScreen.class.getName());
     private Runtime runtime = Runtime.getRuntime();
     private ResourceBundle bundle = ResourceBundle.getBundle("artofillusion.splash.Bundle");
     
@@ -141,7 +141,7 @@ public class SplashScreen extends JDialog implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent event) {        
         Object value = event.getNewValue();
-        logger.info("Active window changed from: {} to {}", event.getOldValue(), value);
+        logger.log(Level.ALL, "Active window changed from:{0} to {1}", new Object[]{event.getOldValue(), value});
         if (value instanceof Dialog && value != SplashScreen.this) {
             setVisible(false);
         } else if (!isVisible()) {
