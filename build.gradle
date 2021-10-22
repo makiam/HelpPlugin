@@ -1,0 +1,33 @@
+description = 'HelpPlugin'
+
+configurations {
+  fatjar
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/help'
+        }
+    }
+}
+
+jar {
+    baseName = 'HelpPlugin'
+    from { configurations.fatjar.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+
+
+dependencies {
+    implementation project(':ArtOfIllusion')
+    implementation group: 'javax.help', name: 'javahelp', version: '2.0.05'
+    fatjar group: 'javax.help', name: 'javahelp', version: '2.0.05'
+    
+}
+
+tasks.withType(Jar) {
+    destinationDir = file("${rootProject.projectDir}/Plugins")
+}
+
+

@@ -1,0 +1,21 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 рту. 2021 у., 23:16:35
+    Author     : MaksK
+*/
+
+body {
+    background-color: #f8e89e;
+    color: #000000;
+    direction: ltr;
+}
+
+p {
+    text-align: left;
+    margin-bottom: 0;
+    font: 'Tahoma';
+    
+}

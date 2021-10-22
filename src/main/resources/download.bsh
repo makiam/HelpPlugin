@@ -1,0 +1,17 @@
+import artofillusion.ArtOfIllusion;
+
+
+Object context = PluginRegistry.invokeExportedMethod("artofillusion.HelpPlugin.getContext", new Object[0]);
+
+cut = arg.indexOf('{');
+if (cut >= 0) {
+    end = arg.indexOf('}');
+    
+    if (end > cut)
+	arg = arg.substring(0, cut) + ArtOfIllusion.getVersion() + arg.substring(end+1);
+}
+
+if (!arg.startsWith("http://")) arg = "http://" + arg;
+
+
+PluginRegistry.invokeExportedMethod("artofillusion.SPManager.download",new Object[] {context, new URL(arg)});
